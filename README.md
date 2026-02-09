@@ -27,7 +27,7 @@ View your app in AI Studio: https://ai.studio/apps/drive/1krVcALSOVcr2-C0HLKfRHg
 ### 1) ارفع المشروع على GitHub
 
 - اعمل repository جديد.
-- ادفع الكود (push) على فرع `main`.
+- ادفع الكود (push) على فرع `main` أو `work` أو أي فرع يطابق `codex/**`.
 
 ### 2) فعّل GitHub Pages
 
@@ -37,7 +37,7 @@ View your app in AI Studio: https://ai.studio/apps/drive/1krVcALSOVcr2-C0HLKfRHg
 - من `Build and deployment` اختَر:
   - **Source: GitHub Actions**
 
-> بمجرد أول push على `main`، الـ workflow راح يبني المشروع وينشره تلقائيًا.
+> بمجرد أول push على أي فرع مدعوم (`main` / `work` / `codex/**`)، الـ workflow راح يبني المشروع وينشره تلقائيًا.
 
 ### 3) رابط الموقع
 
@@ -55,7 +55,22 @@ View your app in AI Studio: https://ai.studio/apps/drive/1krVcALSOVcr2-C0HLKfRHg
 
 ### إعادة النشر بعد أي تعديل
 
-كل مرة تعمل push على `main`:
+كل مرة تعمل push على فرع مدعوم (`main` / `work` / `codex/**`):
 
 - يتم build تلقائي
 - ويتم نشر نسخة جديدة تلقائيًا
+
+
+### Troubleshooting (إذا الموقع ما تغيّر)
+
+إذا شايف التعديل محليًا بس مش ظاهر على رابط GitHub Pages، غالبًا السبب إن التعديل موجود على فرع ثاني (مثل `work` أو `codex/...`) ولسّا مش مدموج في `main`.
+
+بهذا المشروع، الـ workflow صار يشتغل تلقائيًا على الفروع التالية أيضًا:
+- `main`
+- `work`
+- `codex/**`
+
+يعني حتى قبل الدمج، أي push على هالفروع لازم يعمل deploy جديد. وإذا ما ظهر التحديث:
+1) افتح تبويب **Actions** وتأكد آخر run ناجح.
+2) اعمل hard refresh (Ctrl+F5).
+3) تأكد أنك فاتح الرابط الصحيح: `https://<username>.github.io/<repo>/`
