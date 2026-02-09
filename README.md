@@ -10,11 +10,52 @@ View your app in AI Studio: https://ai.studio/apps/drive/1krVcALSOVcr2-C0HLKfRHg
 
 ## Run Locally
 
-**Prerequisites:**  Node.js
-
+**Prerequisites:** Node.js
 
 1. Install dependencies:
    `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+2. Set the `GEMINI_API_KEY` in `.env.local`
 3. Run the app:
    `npm run dev`
+
+---
+
+## نشر المشروع مجانًا على GitHub Pages
+
+إذا بدك تخليه موقع مجاني على GitHub، هاد المشروع صار جاهز عبر GitHub Actions.
+
+### 1) ارفع المشروع على GitHub
+
+- اعمل repository جديد.
+- ادفع الكود (push) على فرع `main`.
+
+### 2) فعّل GitHub Pages
+
+من إعدادات الريبو:
+
+- `Settings` → `Pages`
+- من `Build and deployment` اختَر:
+  - **Source: GitHub Actions**
+
+> بمجرد أول push على `main`، الـ workflow راح يبني المشروع وينشره تلقائيًا.
+
+### 3) رابط الموقع
+
+بعد نجاح الـ Action، بيطلع لك رابط مثل:
+
+`https://<username>.github.io/<repository-name>/`
+
+### ملاحظات مهمة
+
+- تم إعداد `vite.config.ts` لقراءة `VITE_BASE_PATH` حتى يشتغل المسار الصحيح على Pages.
+- ملف workflow موجود في:
+  - `.github/workflows/deploy-pages.yml`
+- الـ workflow يمرر تلقائيًا:
+  - `VITE_BASE_PATH=/<repository-name>/`
+
+### إعادة النشر بعد أي تعديل
+
+كل مرة تعمل push على `main`:
+
+- يتم build تلقائي
+- ويتم نشر نسخة جديدة تلقائيًا
