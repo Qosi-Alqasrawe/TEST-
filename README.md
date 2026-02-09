@@ -74,3 +74,30 @@ View your app in AI Studio: https://ai.studio/apps/drive/1krVcALSOVcr2-C0HLKfRHg
 1) افتح تبويب **Actions** وتأكد آخر run ناجح.
 2) اعمل hard refresh (Ctrl+F5).
 3) تأكد أنك فاتح الرابط الصحيح: `https://<username>.github.io/<repo>/`
+
+
+### حل المشكلة الظاهرة بالصورة (ليش الموقع لسا فاضي؟)
+
+إذا صفحة GitHub (فرع `main`) ما فيها إلا **2 commits** بينما شغلك موجود بفرع ثاني، فالموقع رح يضل قديم.
+
+نفّذ الأوامر التالية من جهازك (copy/paste):
+
+```bash
+git checkout main
+git pull origin main
+git merge work
+git push origin main
+```
+
+إذا اسم فرعك مش `work` (مثلاً `codex/verify-all-project-goals-are-included`) استبدله بالسطر الثالث:
+
+```bash
+git merge codex/verify-all-project-goals-are-included
+```
+
+بعدها:
+1. ادخل **Actions** وتأكد آخر deployment صار ✅
+2. انتظر دقيقة–دقيقتين
+3. اعمل Hard Refresh (`Ctrl + F5`) للرابط
+
+> باختصار: المشكلة مش من الكود الحالي، المشكلة أن آخر تعديلاتك لسا مش واصلة لفرع `main` الظاهر بالموقع.
